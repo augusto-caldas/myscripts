@@ -1,4 +1,4 @@
-## streamlink-crunchyroll.bat
+## streamlink-crunchyroll
 Script to run Crunchyroll on MPV using Streamlink (Windows)
 
 You must:
@@ -12,7 +12,7 @@ Edit script:
 
 ***
 
-## yt-dlp.sh
+## yt-dlp
 Script to download youtube videos using yt-dlp (Linux)
 
 You must:
