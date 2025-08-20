@@ -21,4 +21,4 @@ done
 SECTION="*${START_TIME}-${END_TIME}"
 
 # Download
-yt-dlp -P "$HOME/Videos" -o "%(title)s.%(ext)s" -f bestvideo*+bestaudio/best --merge-output-format mkv --download-sections "*${START_TIME}-${END_TIME}" "$VIDEO_URL"
+yt-dlp -P "$HOME/Videos" -o "%(title)s.%(ext)s" -f bestvideo*+bestaudio/best --merge-output-format mkv --download-sections "$SECTION" "$VIDEO_URL"
