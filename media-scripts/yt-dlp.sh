@@ -1,15 +1,28 @@
 #!/usr/bin/env bash
 
-echo "Enter video start time (default: 00:00:00)"
-echo -n ">> "
-read -r START_TIME
-START_TIME=${START_TIME:-"00:00:00"}
+# Check for --stream flag
+STREAM=false
+if [[ "$1" == "--stream" ]]; then
+    STREAM=true
+    shift
+fi
 
-echo "Enter video end time (empty to download all)"
-echo -n ">> "
-read -r END_TIME
+SECTION=""
 
-# Keep asking until a URL is entered
+# Create section argument if not stream video
+if [ "$STREAM" = false ]; then
+    echo "Enter video start time (default: 00:00:00)"
+    echo -n ">> "
+    read -r START_TIME
+    START_TIME=${START_TIME:-"00:00:00"}
+
+    echo "Enter video end time (empty to download all)"
+    echo -n ">> "
+    read -r END_TIME
+
+    SECTION="--download-sections *${START_TIME}-${END_TIME}"
+fi
+
 VIDEO_URL=""
 while [ -z "$VIDEO_URL" ]; do
     echo "Enter YouTube video URL (cannot be empty)"
@@ -17,8 +30,5 @@ while [ -z "$VIDEO_URL" ]; do
     read -r VIDEO_URL
 done
 
-# Build section argument
-SECTION="*${START_TIME}-${END_TIME}"
-
-# Download
-yt-dlp -P "$HOME/Videos" -o "%(title)s.%(ext)s" -f bestvideo*+bestaudio/best --merge-output-format mkv --download-sections "$SECTION" "$VIDEO_URL"
+# Download in one line
+yt-dlp -P "$HOME/Videos" -o "%(title)s.%(ext)s" -f bestvideo*+bestaudio/best --merge-output-format mkv $SECTION "$VIDEO_URL"
