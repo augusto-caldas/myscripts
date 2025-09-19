@@ -23,10 +23,10 @@ while True:
         page_path = os.path.join(save_folder, f"page_{page}.png")
         cropped_page_path = os.path.join(cropped_save_folder, f"page_{page}.png")
 
-        crop_box = (x, y, width, height)
+        crop_box = (x, y, x + width, y + height)
         page_img = Image.open(page_path)
         cropped_page_img = page_img.crop(crop_box)
         cropped_page_img.save(cropped_page_path)
 
-    if input("Press enter to crop next ebook or 0 to quit") == 0:
+    if input("Press enter to crop next ebook or 0 to quit") == "0":
         exit()

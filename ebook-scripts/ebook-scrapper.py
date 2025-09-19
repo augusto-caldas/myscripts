@@ -37,5 +37,5 @@ while True:
         # Wait page to load
         time.sleep(0.5)
 
-    if input("Press enter to crop next ebook or 0 to quit") == 0:
+    if input("Press enter to crop next ebook or 0 to quit") == "0":
         exit()
