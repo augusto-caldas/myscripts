@@ -1,3 +1,6 @@
+## update-nixos
+Script to update nixos by running channel update, boot update, and collect garbage.
+
 ## kodi-startup
 Script to skip bios selection by awaiting 15 seconds while bliking LEDs and send (F1) key command after wait.
 
